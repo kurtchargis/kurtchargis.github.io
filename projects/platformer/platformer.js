@@ -43,16 +43,22 @@ $(function () {
     // Create platforms
     // You must decide the x position, y position, width, and height of the platforms
     // example usage: createPlatform(x,y,width,height)
-
-
-
+    createPlatform(200, 230, 200, 20 );
+    createPlatform(1000, 500, 200, 20 );
+    createPlatform(600, 680, 100, 100 );
+    createPlatform(250, 400, 125, 125 );
+    createPlatform(1040, 643, 82, 82 );
     
     // TODO 2
     // Create collectables
     // You must decide on the collectable type, the x position, the y position, the gravity, and the bounce strength
     // Your collectable choices are 'database' 'diamond' 'grace' 'kennedi' 'max' and 'steve'; more can be added if you wish
     // example usage: createCollectable(type, x, y, gravity, bounce)
-
+   
+    createCollectable("max", 250, 150, 20, .75);
+    createCollectable("database", 750, 750, 20, .75);
+    createCollectable("grace", 150, 350, 20, .75);
+    createCollectable("kennedi", 450, 650, 20, .75);
 
 
 
@@ -61,7 +67,9 @@ $(function () {
     // You must decide the wall you want the cannon on, the position on the wall, and the time between shots in milliseconds
     // Your wall choices are: 'top' 'left' 'right' and 'bottom'
     // example usage: createCannon(side, position, delay, width, height)
-
+    createCannon("left", 300, 1000); // cannon on left wall, 600px down, shooting once per second
+    createCannon("right", 100, 500);
+    createCannon("top", 1000, 1500);
 
 
 
