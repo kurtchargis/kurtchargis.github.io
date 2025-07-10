@@ -14,16 +14,26 @@ function runProgram(){
   
   // Game Item Objects
   const KEY = {
-    ENTER: 13,
     LEFT: 37,
     UP: 38,
     RIGHT: 39,
     DOWN: 40,
+    A: 65,
+    W: 87,
+    D: 68,
+    S: 83,
   };
 
   let walker = {
     x: 0,
     y: 0,
+    speedX: 0,
+    speedY: 0,
+  };
+
+  let walker2 = {
+    x: $("#board").width()- 55,
+    y: $("#board").height()- 55,
     speedX: 0,
     speedY: 0,
   };
@@ -43,7 +53,8 @@ function runProgram(){
   function newFrame() {
     repositionGameItem();
     redrawGameItem();
-    wallCollision()
+    wallCollision();
+    wallCollision2();
   }
   
   /* 
@@ -67,7 +78,23 @@ function runProgram(){
        walker.speedY = 5;
       console.log("down pressed");
     }
-  }
+    else if(keydown.which === KEY.A){
+      walker2.speedX = -5;
+      console.log("left pressed");
+    }
+    else if(keydown.which === KEY.D){
+       walker2.speedX = 5;
+      console.log("right pressed");
+    }
+    else if(keydown.which === KEY.W){
+       walker2.speedY = -5;
+      console.log("up pressed");
+    }
+    else if(keydown.which === KEY.S){
+       walker2.speedY = 5;
+      console.log("down pressed");
+    }
+    }
    function handleKeyUp(keyup){
     console.log(keyup.which)
     if(keyup.which === KEY.LEFT){
@@ -86,6 +113,22 @@ function runProgram(){
        walker.speedY = 0;
       console.log("down pressed");
    }
+    else if(keyup.which === KEY.A){
+      walker2.speedX = 0;
+      console.log("left pressed");
+    }
+    else if(keyup.which === KEY.D){
+       walker2.speedX = 0;
+      console.log("right pressed");
+    }
+    else if(keyup.which === KEY.W){
+       walker2.speedY = 0;
+      console.log("up pressed");
+    }
+    else if(keyup.which === KEY.S){
+       walker2.speedY = 0;
+      console.log("down pressed");
+    }
    }
   
 
@@ -106,9 +149,13 @@ function runProgram(){
       walker.x = walker.x + walker.speedX;
       walker.y = walker.y + walker.speedY;
       console.log(walker.x, walker.y);
+      walker2.x = walker2.x + walker2.speedX;
+      walker2.y = walker2.y + walker2.speedY;
+      console.log(walker2.x, walker2.y);
   }
   function redrawGameItem(){
     $("#walker").css({"left": walker.x, "top": walker.y });
+    $("#walker2").css({"left": walker2.x, "top": walker2.y });
   }
   //attempted to contain the box by its border
   function wallCollision(){
@@ -123,6 +170,20 @@ function runProgram(){
     }
     if (walker.y > $("#board").height()- 55){
        walker.y -= walker.speedY;
+    }
+  }
+  function wallCollision2(){
+    if (walker2.x  < 0 ){
+       walker2.x -= walker2.speedX;
+    }
+    if (walker2.y < 0){
+       walker2.y -= walker2.speedY;
+    }
+    if (walker2.x > $("#board").width()- 55) {
+       walker2.x -= walker2.speedX;
+    }
+    if (walker2.y > $("#board").height()- 55){
+       walker2.y -= walker2.speedY;
     }
   }
 }
