@@ -60,6 +60,7 @@ function applyFilterNoBackground(filterFunction){
   for(let row = 0; row < image.length; row++){
     for(let col = 0; col < image[row].length; col++){
       //console.log(image[row][col]);
+      
       let pixel = image[row][col];
       let pixelArray = rgbStringToArray(pixel);
 
